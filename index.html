@@ -186,6 +186,35 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
   .hero-card{left:0}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.001s!important}}
+
+/* Quiz / simulação */
+.quiz{background:var(--mist)}
+.quiz-card{max-width:680px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:2.6rem;position:relative;overflow:hidden}
+.quiz-card::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--grad)}
+.quiz-meta{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.1rem}
+.quiz-meta .box{background:var(--blue-soft);border-radius:14px;padding:.85rem 1.1rem;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:.88rem;color:var(--slate)}
+.quiz-meta .box b{color:var(--blue)}
+.quiz-bar{height:8px;border-radius:100px;background:var(--line);overflow:hidden;margin-bottom:2rem}
+.quiz-bar span{display:block;height:100%;width:20%;background:var(--grad);border-radius:100px;transition:width .5s var(--ease)}
+.quiz-step{text-align:center;animation:qfade .45s var(--ease)}
+@keyframes qfade{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.quiz-step h3{font-size:1.5rem;margin-bottom:.4rem}
+.quiz-step .hint{color:var(--slate);margin-bottom:1.4rem}
+.quiz-input{width:100%;padding:1.05rem 1.2rem;border:1.5px solid var(--line);border-radius:14px;font-family:var(--ff);font-size:1.05rem;color:var(--ink);transition:border-color .3s,box-shadow .3s;background:#fff;text-align:center}
+.quiz-input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(24,99,220,.12)}
+.quiz-actions{display:flex;gap:.8rem;margin-top:1.4rem}
+.quiz-back{flex:0 0 auto;width:56px;border:1.5px solid var(--line);background:#fff;border-radius:14px;cursor:pointer;font-size:1.3rem;color:var(--slate);transition:.3s}
+.quiz-back:hover{border-color:var(--blue);color:var(--blue)}
+.quiz-next{flex:1;justify-content:center}
+.quiz-next:disabled{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none}
+.quiz-badge{display:inline-block;background:var(--grad);color:#fff;font-weight:700;font-size:.82rem;padding:.5rem 1.2rem;border-radius:100px;margin-bottom:1rem}
+.quiz-summary{background:var(--blue-soft);border-radius:16px;padding:1.1rem 1.3rem;margin-top:1.2rem;text-align:left;font-size:.92rem;color:var(--slate);display:grid;gap:.4rem}
+.quiz-summary b{color:var(--ink)}
+.quiz-done{text-align:center;padding:1rem 0;animation:qfade .45s var(--ease)}
+.quiz-done .ic{width:74px;height:74px;border-radius:50%;background:var(--grad);display:grid;place-items:center;margin:0 auto 1.2rem}
+.quiz-done .ic svg{width:36px;height:36px;stroke:#fff}
+.quiz-done h3{font-size:1.6rem;margin-bottom:.5rem}
+@media(max-width:680px){.quiz-card{padding:1.6rem}.quiz-meta{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -230,6 +259,25 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <div><div class="n">até R$ 73 mil</div><div class="l">em diárias por afastamento*</div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ / SIMULAÇÃO -->
+<section class="sec quiz" id="simulacao">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="quiz-badge">Simulação personalizada</span>
+      <h2>Agora, conta um pouco <span class="grad-text">sobre você</span></h2>
+      <p>Leva menos de 1 minuto. Uma consultora BeautySeg entra em contato com a sua proposta, sem compromisso.</p>
+    </div>
+    <div class="quiz-card rv" data-d="1">
+      <div class="quiz-meta">
+        <div class="box"><span>Etapa</span><b id="qStep">1 de 5</b></div>
+        <div class="box"><span>Campo</span><b id="qField">Nome</b></div>
+      </div>
+      <div class="quiz-bar"><span id="qBar"></span></div>
+      <form id="quiz" novalidate autocomplete="off"><div id="quizBody"></div></form>
     </div>
   </div>
 </section>
@@ -408,6 +456,91 @@ links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.styl
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cio=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.count,pre=el.dataset.pre||'',suf=el.dataset.suf||'';if(reduce){el.textContent=pre+t+suf;}else{const o={v:0};const start=performance.now();const dur=1600;(function tick(now){const p=Math.min(1,(now-start)/dur);const e2=1-Math.pow(1-p,3);el.textContent=pre+Math.floor(t*e2)+suf;if(p<1)requestAnimationFrame(tick);})(start);}cio.unobserve(el);}}),{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* ---------- QUIZ / SIMULAÇÃO ---------- */
+(function(){
+  const WA='5511917295981';
+  const UFS=[['AC','Acre'],['AL','Alagoas'],['AP','Amapá'],['AM','Amazonas'],['BA','Bahia'],['CE','Ceará'],['DF','Distrito Federal'],['ES','Espírito Santo'],['GO','Goiás'],['MA','Maranhão'],['MT','Mato Grosso'],['MS','Mato Grosso do Sul'],['MG','Minas Gerais'],['PA','Pará'],['PB','Paraíba'],['PR','Paraná'],['PE','Pernambuco'],['PI','Piauí'],['RJ','Rio de Janeiro'],['RN','Rio Grande do Norte'],['RS','Rio Grande do Sul'],['RO','Rondônia'],['RR','Roraima'],['SC','Santa Catarina'],['SP','São Paulo'],['SE','Sergipe'],['TO','Tocantins']];
+  const data={nome:'',nasc:'',whats:'',uf:'',ufNome:'',cidade:''};
+  const steps=[
+    {key:'nome',field:'Nome',q:()=>'Qual é o seu nome completo?',hint:()=>'Vamos começar pelo básico.',type:'text',ph:'Seu nome completo'},
+    {key:'nasc',field:'Nascimento',q:()=>'Qual é a sua data de nascimento?',hint:()=>'Usamos para personalizar a sua proteção.',type:'date',ph:'DD/MM/AAAA'},
+    {key:'whats',field:'WhatsApp',q:()=>`Prazer, ${first()}! Qual é o seu WhatsApp?`,hint:()=>'Com DDD. É por onde a consultora fala com você.',type:'phone',ph:'(XX) XXXXX-XXXX'},
+    {key:'uf',field:'Estado',q:()=>'Em qual estado você mora?',hint:()=>'Selecione o seu estado.',type:'uf'},
+    {key:'cidade',field:'Cidade',q:()=>'Qual é a sua cidade?',hint:()=>`Selecione a sua cidade em ${data.ufNome||'seu estado'}.`,type:'city'}
+  ];
+  let step=0; const cityCache={};
+  const body=document.getElementById('quizBody'),bar=document.getElementById('qBar'),sEl=document.getElementById('qStep'),fEl=document.getElementById('qField');
+  if(!body) return;
+  const first=()=>{const n=(data.nome||'').trim().split(' ')[0];return n?n.charAt(0).toUpperCase()+n.slice(1).toLowerCase():'tudo bem';};
+  const valid=()=>{const v=data[steps[step].key]; const t=steps[step].type;
+    if(t==='date')return /^\d{2}\/\d{2}\/\d{4}$/.test(v);
+    if(t==='phone')return v.replace(/\D/g,'').length>=10;
+    return (v||'').trim().length>1;};
+  function maskDate(s){s=s.replace(/\D/g,'').slice(0,8);if(s.length>4)return s.replace(/(\d{2})(\d{2})(\d+)/,'$1/$2/$3');if(s.length>2)return s.replace(/(\d{2})(\d+)/,'$1/$2');return s;}
+  function maskPhone(s){s=s.replace(/\D/g,'').slice(0,11);if(s.length>7)return s.replace(/(\d{2})(\d{5})(\d+)/,'($1) $2-$3');if(s.length>2)return s.replace(/(\d{2})(\d+)/,'($1) $2');if(s.length>0)return s.replace(/(\d+)/,'($1');return s;}
+  function render(){
+    const s=steps[step]; const last=step===steps.length-1;
+    sEl.textContent=(step+1)+' de 5'; fEl.textContent=s.field; bar.style.width=((step+1)/5*100)+'%';
+    let inputHTML='';
+    if(s.type==='uf'){
+      inputHTML='<select class="quiz-input" id="qInput"><option value="">Selecione o estado…</option>'+UFS.map(u=>`<option value="${u[0]}" ${data.uf===u[0]?'selected':''}>${u[1]}</option>`).join('')+'</select>';
+    }else if(s.type==='city'){
+      inputHTML='<input class="quiz-input" id="qInput" list="qCities" placeholder="Digite o nome da cidade" value="'+(data.cidade||'')+'"><datalist id="qCities"></datalist>';
+    }else{
+      const it=s.type==='date'?'tel':(s.type==='phone'?'tel':'text');
+      inputHTML=`<input class="quiz-input" id="qInput" type="${it}" inputmode="${s.type==='text'?'text':'numeric'}" placeholder="${s.ph}" value="${data[s.key]||''}">`;
+    }
+    body.innerHTML=`<div class="quiz-step">
+      <h3>${s.q()}</h3><p class="hint">${s.hint()}</p>
+      ${inputHTML}
+      ${last?summaryHTML():''}
+      <div class="quiz-actions">
+        ${step>0?'<button type="button" class="quiz-back" id="qBack" aria-label="Voltar">←</button>':''}
+        <button type="submit" class="btn btn-grad quiz-next" id="qNext">${last?'Enviar para a consultora':'Continuar'} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div></div>`;
+    const inp=document.getElementById('qInput'),next=document.getElementById('qNext');
+    const sync=()=>{next.disabled=!valid();};
+    inp.addEventListener('input',e=>{
+      let v=e.target.value;
+      if(s.type==='date')v=maskDate(v);
+      if(s.type==='phone')v=maskPhone(v);
+      e.target.value=v; data[s.key]=v;
+      if(s.type==='uf'){const f=UFS.find(u=>u[0]===v);data.ufNome=f?f[1]:'';}
+      sync();
+    });
+    if(s.type==='uf')inp.addEventListener('change',e=>{data.uf=e.target.value;const f=UFS.find(u=>u[0]===e.target.value);data.ufNome=f?f[1]:'';sync();});
+    sync();
+    const back=document.getElementById('qBack'); if(back)back.addEventListener('click',()=>{step--;render();});
+    if(s.type==='city')loadCities();
+    if(s.type!=='uf')setTimeout(()=>inp.focus(),60);
+  }
+  function summaryHTML(){return `<div class="quiz-summary">
+    <div>👤 <b>${data.nome||'—'}</b></div>
+    <div>📱 <b>${data.whats||'—'}</b></div>
+    <div>📍 <b>${data.cidade||'—'}${data.ufNome?' · '+data.ufNome:''}</b></div>
+  </div>`;}
+  function loadCities(){
+    const dl=document.getElementById('qCities'); if(!dl||!data.uf)return;
+    const fill=(arr)=>{dl.innerHTML=arr.map(n=>`<option value="${n}">`).join('');};
+    if(cityCache[data.uf]){fill(cityCache[data.uf]);return;}
+    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${data.uf}/municipios?orderBy=nome`)
+      .then(r=>r.json()).then(j=>{const arr=j.map(m=>m.nome);cityCache[data.uf]=arr;fill(arr);}).catch(()=>{});
+  }
+  document.getElementById('quiz').addEventListener('submit',e=>{
+    e.preventDefault(); if(!valid())return;
+    if(step<steps.length-1){step++;render();return;}
+    const msg=`Olá! Quero a minha simulação do Seguro Renda Protegida BeautySeg.%0A%0A👤 Nome: ${enc(data.nome)}%0A🎂 Nascimento: ${enc(data.nasc)}%0A📱 WhatsApp: ${enc(data.whats)}%0A📍 Cidade: ${enc(data.cidade)} - ${enc(data.ufNome)}`;
+    const url=`https://wa.me/${WA}?text=${msg}`;
+    body.innerHTML=`<div class="quiz-done"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h3>Tudo certo, ${first()}!</h3><p class="hint">Estamos te levando ao WhatsApp da consultora. Se não abrir, toque no botão abaixo.</p>
+      <a href="${url}" class="btn btn-grad quiz-next" target="_blank" rel="noopener" style="display:inline-flex">Falar com a consultora</a></div>`;
+    sEl.textContent='Concluído'; fEl.textContent='✓'; bar.style.width='100%';
+    window.open(url,'_blank');
+  });
+  function enc(s){return encodeURIComponent(s||'—');}
+  render();
+})();
 </script>
 </body>
 </html>
