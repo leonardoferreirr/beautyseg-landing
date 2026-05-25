@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeautySeg — Seguro Renda Protegida para Profissionais da Beleza e Estética</title>
+<meta name="description" content="A primeira e única corretora do Brasil especializada em Seguro de Renda Protegida para esteticistas e profissionais da beleza. 20 anos de parceria com a Porto Seguro. Proteja sua renda mesmo sem poder trabalhar.">
+<meta name="theme-color" content="#1863dc">
+<meta property="og:title" content="BeautySeg — Seguro Renda Protegida para Profissionais da Beleza">
+<meta property="og:description" content="Sua renda depende das suas mãos. Proteja-a com a BeautySeg, parceira Porto Seguro há 20 anos.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1863dc; --blue-deep:#0b3a8f; --blue-soft:#eaf1fd;
+  --purple:#7a4fa1; --pink:#ec0a8c; --pink-soft:#fde7f4;
+  --ink:#161a2e; --slate:#5a6080; --line:#e7eaf3;
+  --paper:#ffffff; --mist:#f6f8fd;
+  --grad:linear-gradient(95deg,#1863dc 0%,#7a4fa1 52%,#ec0a8c 100%);
+  --grad-soft:linear-gradient(120deg,#eaf1fd,#fde7f4);
+  --ff:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --shadow-sm:0 4px 18px -8px rgba(22,26,46,.14);
+  --shadow:0 24px 60px -24px rgba(24,99,220,.28);
+  --shadow-pink:0 24px 60px -22px rgba(236,10,140,.4);
+  --radius:24px; --maxw:1180px; --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--ff);color:var(--ink);background:var(--paper);line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(100% - 3rem,var(--maxw));margin-inline:auto}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.eyebrow.pink{color:var(--pink)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;font-size:1rem;padding:1.05rem 2rem;border-radius:100px;border:none;cursor:pointer;transition:transform .4s var(--ease),box-shadow .4s var(--ease);white-space:nowrap}
+.btn svg{width:18px;height:18px;transition:transform .4s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-grad{background:var(--grad);color:#fff;box-shadow:var(--shadow-pink)}
+.btn-grad:hover{transform:translateY(-3px);box-shadow:0 30px 70px -22px rgba(236,10,140,.55)}
+.btn-ghost{background:#fff;color:var(--blue);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--blue);transform:translateY(-3px)}
+.btn-white{background:#fff;color:var(--blue)}
+.btn-white:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+
+/* Nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:100;padding:1rem 0;transition:.4s var(--ease)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.7);backdrop-filter:blur(16px) saturate(150%);border:1px solid var(--line);border-radius:100px;padding:.55rem .6rem .55rem 1.4rem;box-shadow:var(--shadow-sm);transition:.4s}
+.nav.scrolled .nav-inner{background:rgba(255,255,255,.92)}
+.nav .logo{height:34px;width:auto}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-weight:600;font-size:.92rem;color:var(--slate);transition:color .3s}
+.nav-links a:hover{color:var(--blue)}
+.nav-cta{padding:.7rem 1.5rem;font-size:.9rem}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem}
+.burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+
+/* Hero */
+.hero{position:relative;padding:9rem 0 5rem;overflow:hidden;background:var(--grad-soft)}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none}
+.hero-blob.a{width:480px;height:480px;background:rgba(24,99,220,.35);top:-140px;right:-80px}
+.hero-blob.b{width:380px;height:380px;background:rgba(236,10,140,.25);bottom:-150px;left:-100px}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:.6rem;background:#fff;border:1px solid var(--line);border-radius:100px;padding:.5rem 1rem .5rem .6rem;font-size:.84rem;font-weight:600;color:var(--ink);box-shadow:var(--shadow-sm);margin-bottom:1.6rem}
+.badge .pt{background:var(--blue);color:#fff;font-size:.7rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;letter-spacing:.02em}
+.hero h1{font-size:clamp(2.4rem,5.2vw,3.9rem);margin-bottom:1.3rem}
+.hero p.sub{font-size:1.18rem;color:var(--slate);max-width:32rem;margin-bottom:2.2rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.hero-mini{margin-top:2rem;display:flex;gap:1.8rem;flex-wrap:wrap}
+.hero-mini .m{display:flex;align-items:center;gap:.6rem;font-size:.92rem;color:var(--slate);font-weight:600}
+.hero-mini .m svg{width:20px;height:20px;stroke:var(--blue)}
+.hero-media{position:relative}
+.hero-photo{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-card{position:absolute;bottom:-26px;left:-22px;background:#fff;border-radius:18px;padding:1.1rem 1.3rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:.9rem;max-width:250px}
+.hero-card .ic{width:46px;height:46px;border-radius:13px;background:var(--grad);display:grid;place-items:center;flex-shrink:0}
+.hero-card .ic svg{width:24px;height:24px;stroke:#fff}
+.hero-card .n{font-weight:800;font-size:1.1rem}
+.hero-card .l{font-size:.78rem;color:var(--slate)}
+
+/* Logos / trust strip */
+.trust{padding:2rem 0;border-bottom:1px solid var(--line)}
+.trust-inner{display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;text-align:center}
+.trust .t{font-weight:700;color:var(--slate);font-size:.95rem}
+.trust .porto{font-weight:800;color:var(--blue-deep);font-size:1.15rem}
+
+/* Section base */
+.sec{padding:6.5rem 0}
+.sec-head{max-width:44rem;margin-bottom:3.4rem}
+.sec-head.center{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3rem);margin:1rem 0 1rem}
+.sec-head p{color:var(--slate);font-size:1.1rem}
+
+/* Problem */
+.problem{background:var(--mist)}
+.problem-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:3.5rem;align-items:center}
+.problem-media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1/1}
+.problem-media img{width:100%;height:100%;object-fit:cover}
+.problem h2{font-size:clamp(2rem,4.4vw,3rem);margin-bottom:1.2rem}
+.problem p{color:var(--slate);font-size:1.1rem;margin-bottom:1rem}
+.problem .hl{background:var(--pink-soft);color:var(--pink);font-weight:700;padding:.1em .4em;border-radius:6px}
+
+/* Coberturas cards */
+.cob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.cob{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:2.1rem 1.9rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s;position:relative;overflow:hidden}
+.cob:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:transparent}
+.cob .ic{width:56px;height:56px;border-radius:16px;background:var(--grad-soft);display:grid;place-items:center;margin-bottom:1.3rem}
+.cob .ic svg{width:28px;height:28px;stroke:var(--blue)}
+.cob h3{font-size:1.28rem;margin-bottom:.5rem}
+.cob p{color:var(--slate);font-size:.97rem}
+
+/* Pra quem é */
+.audience{background:var(--ink);color:#fff;border-radius:34px}
+.audience .sec-head h2{color:#fff}
+.audience .sec-head p{color:rgba(255,255,255,.7)}
+.chips{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;max-width:54rem;margin:0 auto}
+.chip{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:.7rem 1.3rem;font-weight:600;font-size:.95rem;transition:.35s var(--ease)}
+.chip:hover{background:var(--grad);border-color:transparent;transform:translateY(-3px)}
+
+/* Juliana story */
+.story-card{background:var(--grad);border-radius:34px;padding:3.4rem;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.story-card::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.12);top:-120px;right:-80px}
+.story-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.story-grid h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1rem;color:#fff}
+.story-grid p{color:rgba(255,255,255,.9);font-size:1.05rem}
+.story-nums{display:grid;gap:1rem}
+.story-num{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:1.3rem 1.6rem;backdrop-filter:blur(6px)}
+.story-num .n{font-size:2rem;font-weight:800;line-height:1}
+.story-num .l{font-size:.9rem;color:rgba(255,255,255,.85);margin-top:.3rem}
+
+/* Consultora / depoimento */
+.consult-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:3rem;align-items:center}
+.consult-media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;max-width:360px}
+.consult-media img{width:100%;height:100%;object-fit:cover}
+.consult h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:1.1rem}
+.consult p{color:var(--slate);font-size:1.08rem;margin-bottom:1.4rem}
+.consult ul{list-style:none;display:grid;gap:.8rem;margin-bottom:1.8rem}
+.consult li{display:flex;gap:.7rem;align-items:flex-start;font-size:1rem}
+.consult li svg{width:22px;height:22px;stroke:var(--pink);flex-shrink:0;margin-top:3px}
+
+/* Final CTA */
+.final{text-align:center;background:var(--grad-soft)}
+.final h2{font-size:clamp(2rem,5vw,3.2rem);max-width:24rem;margin:1rem auto 1rem}
+.final p{color:var(--slate);font-size:1.15rem;max-width:34rem;margin:0 auto 2.2rem}
+
+/* Footer */
+.footer{background:var(--ink);color:rgba(255,255,255,.66);padding:4rem 0 2rem}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1.3fr;gap:2.5rem;padding-bottom:2.6rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer .logo{height:40px;margin-bottom:1.1rem;filter:brightness(0) invert(1)}
+.footer p{font-size:.92rem;max-width:24rem}
+.footer h4{color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1rem}
+.footer ul{list-style:none;display:grid;gap:.6rem}
+.footer a,.footer li{font-size:.94rem;transition:color .3s}
+.footer a:hover{color:#fff}
+.foot-legal{padding-top:1.6rem;font-size:.8rem;color:rgba(255,255,255,.42);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
+
+/* WhatsApp float */
+.wfloat{position:fixed;bottom:1.5rem;right:1.5rem;z-index:90;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(37,211,102,.7);transition:transform .4s var(--ease)}
+.wfloat:hover{transform:scale(1.1)}
+.wfloat svg{width:32px;height:32px;fill:#fff}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}.rv[data-d="3"]{transition-delay:.3s}.rv[data-d="4"]{transition-delay:.4s}
+
+@media(max-width:980px){
+  .hero-grid,.problem-grid,.story-grid,.consult-grid{grid-template-columns:1fr;gap:2.4rem}
+  .hero-media,.consult-media{max-width:30rem;margin-inline:auto}
+  .cob-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .story-card{padding:2.4rem}
+}
+@media(max-width:680px){
+  .nav-links{display:none}.burger{display:flex}
+  .sec{padding:4.4rem 0}
+  .hero{padding:7.5rem 0 3.5rem}
+  .cob-grid,.footer-grid{grid-template-columns:1fr}
+  .hero-card{left:0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.001s!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#topo"><img src="assets/logo.png" alt="BeautySeg" class="logo"></a>
+    <nav class="nav-links">
+      <a href="#protecao">A proteção</a>
+      <a href="#coberturas">Coberturas</a>
+      <a href="#quem">Pra quem é</a>
+      <a href="#exemplo">Exemplo real</a>
+    </nav>
+    <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida%20BeautySeg." class="btn btn-grad nav-cta">Quero me proteger</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="topo">
+  <span class="hero-blob a"></span><span class="hero-blob b"></span>
+  <div class="wrap hero-grid">
+    <div class="hero-copy rv">
+      <span class="badge"><span class="pt">20 anos</span>de parceria com a Porto Seguro</span>
+      <h1>Sua renda depende das suas mãos. <span class="grad-text">E se elas precisarem parar?</span></h1>
+      <p class="sub">O Seguro Renda Protegida BeautySeg garante a sua diária mesmo quando um acidente ou doença te afasta do trabalho. A primeira e única corretora do Brasil feita para profissionais da beleza e estética.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida%20BeautySeg." class="btn btn-grad">Quero proteger minha renda
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#coberturas" class="btn btn-ghost">Ver coberturas</a>
+      </div>
+      <div class="hero-mini">
+        <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Renda garantida</div>
+        <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Sem burocracia</div>
+        <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> A partir de ~R$100/mês</div>
+      </div>
+    </div>
+    <div class="hero-media rv" data-d="1">
+      <div class="hero-photo"><img src="assets/hero-esteticista.jpg" alt="Profissional da estética em atendimento"></div>
+      <div class="hero-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <div><div class="n">até R$ 73 mil</div><div class="l">em diárias por afastamento*</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <span class="t">Garantia e solidez de quem você confia:</span>
+    <span class="porto">Porto Seguro</span>
+    <span class="t">·  20 anos de parceria</span>
+    <span class="t">·  SUSEP 202024508</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="sec problem" id="protecao">
+  <div class="wrap problem-grid">
+    <div class="problem-media rv"><img src="assets/mao-quebrada.jpg" alt="Profissional com o braço imobilizado"></div>
+    <div class="rv" data-d="1">
+      <span class="eyebrow pink">A realidade que ninguém quer viver</span>
+      <h2>Quando a sua mão para, <span class="grad-text">a sua renda para junto.</span></h2>
+      <p>Você é autônoma. Não existe atestado que pague o boleto. Um tombo, uma cirurgia, uma tendinite, um afastamento por doença e a agenda esvazia, mas as contas continuam chegando.</p>
+      <p>O <span class="hl">Seguro Renda Protegida BeautySeg</span> existe exatamente para esse momento: você recebe a sua diária e mantém o seu padrão de vida enquanto se recupera, sem depender de ninguém.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COBERTURAS -->
+<section class="sec" id="coberturas">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">As coberturas</span>
+      <h2>Proteção completa, feita <span class="grad-text">sob medida pra você</span></h2>
+      <p>Uma solução personalizável que cuida da sua renda, da sua tranquilidade e da sua família.</p>
+    </div>
+    <div class="cob-grid">
+      <article class="cob rv" data-d="1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div>
+        <h3>Renda garantida</h3><p>Receba em caso de incapacidade temporária por acidente ou doença. Sua renda não para quando você precisa parar.</p></article>
+      <article class="cob rv" data-d="2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+        <h3>Diária integral</h3><p>Você recebe a diária de acordo com o valor contratado, podendo chegar a 365 diárias.</p></article>
+      <article class="cob rv" data-d="3">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Proteção financeira</h3><p>Plano personalizado e customizável, que cabe no seu orçamento e acompanha a sua realidade.</p></article>
+      <article class="cob rv" data-d="1">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h3>Pagamento rápido</h3><p>Sem labirinto, sem letras miúdas. Processo ágil e descomplicado quando você mais precisa.</p></article>
+      <article class="cob rv" data-d="2">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Complemento ao INSS</h3><p>Some à sua proteção do INSS e mantenha o padrão de vida sem depender só do auxílio.</p></article>
+      <article class="cob rv" data-d="3">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg></div>
+        <h3>Tranquilidade pra família</h3><p>Segurança para você e para quem você ama, em todos os momentos da vida.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- PRA QUEM É -->
+<section class="sec">
+  <div class="wrap audience" style="padding:4.5rem 2rem">
+    <div class="sec-head center rv">
+      <span class="eyebrow" style="color:#ff8fcf">Pra quem é</span>
+      <h2>Feito para quem deixa o mundo <span class="grad-text">mais bonito</span></h2>
+      <p>Autônomos, MEIs ou com registro em carteira. Se a sua renda vem das suas mãos, é pra você.</p>
+    </div>
+    <div class="chips">
+      <span class="chip rv">Esteticista</span><span class="chip rv">Biomédico(a)</span><span class="chip rv">Maquiador(a)</span>
+      <span class="chip rv">Designer de Sobrancelhas</span><span class="chip rv">Micropigmentador(a)</span><span class="chip rv">Lash Designer</span>
+      <span class="chip rv">Manicure / Pedicure</span><span class="chip rv">Cabeleireiro(a)</span><span class="chip rv">Barbeiro</span>
+      <span class="chip rv">Podólogo(a)</span><span class="chip rv">Depilador(a)</span><span class="chip rv">Massoterapeuta</span>
+      <span class="chip rv">Fisioterapeuta</span><span class="chip rv">Odontólogo(a)</span><span class="chip rv">Tatuador(a)</span>
+      <span class="chip rv">Visagista</span><span class="chip rv">Técnico(a) em Estética</span><span class="chip rv">e muito +</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXEMPLO / JULIANA -->
+<section class="sec" id="exemplo">
+  <div class="wrap">
+    <div class="story-card rv">
+      <div class="story-grid">
+        <div>
+          <span class="eyebrow" style="color:#fff;opacity:.85">Imagine-se no lugar da Juliana</span>
+          <h2>R$ 126,75 por mês que viram até R$ 73 mil quando a vida aperta</h2>
+          <p>Juliana tem 37 anos, é esteticista autônoma e comprova renda de R$ 6.000. Investindo apenas R$ 126,75 por mês, em caso de incapacidade por acidente ou doença ela pode receber até 365 diárias, totalizando R$ 73.000 — e mantém suas contas em dia enquanto se recupera.</p>
+        </div>
+        <div class="story-nums">
+          <div class="story-num"><div class="n" data-count="126" data-pre="R$ " data-suf=",75">R$ 0</div><div class="l">de investimento por mês</div></div>
+          <div class="story-num"><div class="n" data-count="365" data-suf="">0</div><div class="l">diárias de cobertura</div></div>
+          <div class="story-num"><div class="n" data-count="73" data-pre="R$ " data-suf=" mil">R$ 0</div><div class="l">recebidos em caso de afastamento</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTORA -->
+<section class="sec problem">
+  <div class="wrap consult-grid">
+    <div class="consult-media rv"><img src="assets/depoimento-maria.jpg" alt="Consultora BeautySeg"></div>
+    <div class="rv" data-d="1">
+      <span class="eyebrow">Atendimento humano</span>
+      <h2>Fale com uma <span class="grad-text">Consultora BeautySeg</span></h2>
+      <p>Você vai se surpreender com o quanto é simples, acessível e fundamental proteger a sua renda. A gente entende a sua profissão, suas preocupações e a sua realidade.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Simulação gratuita e sem compromisso</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Plano que cabe no seu bolso</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Especialistas no seu segmento</li>
+      </ul>
+      <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20falar%20com%20uma%20Consultora%20BeautySeg%20sobre%20o%20Seguro%20Renda%20Protegida." class="btn btn-grad">Falar com uma consultora
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec final">
+  <div class="wrap rv">
+    <span class="eyebrow pink">A decisão é sua</span>
+    <h2>O que você faz com <span class="grad-text">R$ 100 no seu mês?</span></h2>
+    <p>Que tal investir na sua proteção e na da sua família? A escolha é entre o pesadelo da preocupação e o sonho da tranquilidade.</p>
+    <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20a%20minha%20proposta%20do%20Seguro%20Renda%20Protegida%20BeautySeg." class="btn btn-grad">Quero a minha proposta
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/logo.png" alt="BeautySeg" class="logo">
+        <p>A primeira e única corretora do Brasil especializada em Seguro de Renda Protegida para profissionais da beleza e estética. Parceira Porto Seguro há 20 anos.</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#protecao">A proteção</a></li>
+          <li><a href="#coberturas">Coberturas</a></li>
+          <li><a href="#quem">Pra quem é</a></li>
+          <li><a href="#exemplo">Exemplo real</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5511917295981">WhatsApp · (11) 91729-5981</a></li>
+          <li><a href="mailto:atendimento@beautyseguros.com.br">atendimento@beautyseguros.com.br</a></li>
+          <li><a href="https://instagram.com/beautyseg" target="_blank" rel="noopener">@beautyseg</a></li>
+          <li>R. Saguairu, 665 CJ 43 · Casa Verde · São Paulo · SP</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 BeautySeg · CNPJ 05.571.219/0001-64 · SUSEP 202024508</span>
+      <span>*Valores ilustrativos, conforme coberturas contratadas.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida%20BeautySeg." class="wfloat" aria-label="WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5L8.8 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.2.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2"/></svg>
+</a>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// burger
+const burger=document.getElementById('burger'),links=document.querySelector('.nav-links');
+burger.addEventListener('click',()=>{const o=links.style.display==='flex';Object.assign(links.style,o?{display:''}:{display:'flex',position:'absolute',top:'120%',right:'0',flexDirection:'column',background:'#fff',padding:'1.2rem 1.6rem',borderRadius:'16px',gap:'1rem',boxShadow:'var(--shadow)'});});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.style.display=''));
+// count-up
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cio=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.count,pre=el.dataset.pre||'',suf=el.dataset.suf||'';if(reduce){el.textContent=pre+t+suf;}else{const o={v:0};const start=performance.now();const dur=1600;(function tick(now){const p=Math.min(1,(now-start)/dur);const e2=1-Math.pow(1-p,3);el.textContent=pre+Math.floor(t*e2)+suf;if(p<1)requestAnimationFrame(tick);})(start);}cio.unobserve(el);}}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+</script>
+</body>
+</html>
