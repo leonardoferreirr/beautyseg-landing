@@ -215,6 +215,26 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
 .quiz-done .ic svg{width:36px;height:36px;stroke:#fff}
 .quiz-done h3{font-size:1.6rem;margin-bottom:.5rem}
 @media(max-width:680px){.quiz-card{padding:1.6rem}.quiz-meta{grid-template-columns:1fr}}
+/* Quiz: opções e resultado */
+.quiz-opts{display:grid;gap:.7rem;margin-top:.2rem}
+.quiz-opt{width:100%;text-align:center;padding:1.05rem 1.2rem;border:1.5px solid var(--line);background:#fff;border-radius:14px;font-family:var(--ff);font-size:1.05rem;font-weight:700;color:var(--ink);cursor:pointer;transition:.25s var(--ease)}
+.quiz-opt:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.quiz-opt.sel{border-color:transparent;background:var(--grad);color:#fff}
+.quiz-prefix{position:relative}
+.quiz-prefix .pfx{position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);font-weight:800;color:var(--blue);font-size:1.05rem;pointer-events:none}
+.quiz-prefix .quiz-input{padding-left:3rem;text-align:left}
+.quiz-result{text-align:center;animation:qfade .45s var(--ease)}
+.quiz-result h3{font-size:clamp(1.45rem,4vw,2rem);margin-bottom:.3rem}
+.quiz-result .lead-lbl{color:var(--slate);margin-bottom:1.1rem}
+.quiz-big{background:var(--pink-soft);border:1px solid #f6c6e2;border-radius:18px;padding:1.4rem;margin:0 auto 1.6rem;max-width:420px}
+.quiz-big .v{font-size:clamp(2.2rem,7vw,3rem);font-weight:800;color:var(--pink);line-height:1}
+.quiz-big .l{color:var(--slate);font-size:.92rem;margin-top:.35rem}
+.quiz-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.4rem}
+.quiz-rc{background:var(--mist);border:1px solid var(--line);border-radius:14px;padding:1rem .7rem;text-align:center}
+.quiz-rc .l{font-size:.78rem;color:var(--slate);margin-bottom:.35rem}
+.quiz-rc .v{font-weight:800;color:var(--ink);font-size:1.02rem}
+.quiz-note{background:var(--blue-soft);border-radius:14px;padding:1rem 1.2rem;color:var(--slate);font-size:.95rem;margin-bottom:1.4rem;text-align:center}
+@media(max-width:680px){.quiz-cards{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -227,9 +247,9 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
       <a href="#protecao">A proteção</a>
       <a href="#coberturas">Coberturas</a>
       <a href="#quem">Pra quem é</a>
-      <a href="#exemplo">Exemplo real</a>
+      <a href="#simulacao">Simular</a>
     </nav>
-    <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida%20BeautySeg." class="btn btn-grad nav-cta">Quero me proteger</a>
+    <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida." class="btn btn-grad nav-cta">Quero me proteger</a>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -241,9 +261,9 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
     <div class="hero-copy rv">
       <span class="badge"><span class="pt">20 anos</span>de parceria com a Porto Seguro</span>
       <h1>Sua renda depende das suas mãos. <span class="grad-text">E se elas precisarem parar?</span></h1>
-      <p class="sub">O Seguro Renda Protegida BeautySeg garante a sua diária mesmo quando um acidente ou doença te afasta do trabalho. A primeira e única corretora do Brasil feita para profissionais da beleza e estética.</p>
+      <p class="sub">O Seguro Renda Protegida garante a sua diária mesmo quando um acidente ou doença te afasta do trabalho. A primeira e única corretora do Brasil feita para profissionais da beleza e estética.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida%20BeautySeg." class="btn btn-grad">Quero proteger minha renda
+        <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida." class="btn btn-grad">Quero proteger minha renda
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="#coberturas" class="btn btn-ghost">Ver coberturas</a>
       </div>
@@ -267,14 +287,14 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
 <section class="sec quiz" id="simulacao">
   <div class="wrap">
     <div class="sec-head center rv">
-      <span class="quiz-badge">Simulação personalizada</span>
-      <h2>Agora, conta um pouco <span class="grad-text">sobre você</span></h2>
-      <p>Leva menos de 1 minuto. Uma consultora BeautySeg entra em contato com a sua proposta, sem compromisso.</p>
+      <span class="quiz-badge">Descubra seu risco financeiro</span>
+      <h2>Se um acidente ou doença te <span class="grad-text">afastar do trabalho</span>, sua renda para junto.</h2>
+      <p>Responda 3 perguntas e veja, em segundos, quanto você deixaria de ganhar.</p>
     </div>
     <div class="quiz-card rv" data-d="1">
       <div class="quiz-meta">
-        <div class="box"><span>Etapa</span><b id="qStep">1 de 5</b></div>
-        <div class="box"><span>Campo</span><b id="qField">Nome</b></div>
+        <div class="box"><span>Etapa</span><b id="qStep">1 de 3</b></div>
+        <div class="box"><span>Tópico</span><b id="qField">Renda mensal</b></div>
       </div>
       <div class="quiz-bar"><span id="qBar"></span></div>
       <form id="quiz" novalidate autocomplete="off"><div id="quizBody"></div></form>
@@ -300,7 +320,7 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
       <span class="eyebrow pink">A realidade que ninguém quer viver</span>
       <h2>Quando a sua mão para, <span class="grad-text">a sua renda para junto.</span></h2>
       <p>Você é autônoma. Não existe atestado que pague o boleto. Um tombo, uma cirurgia, uma tendinite, um afastamento por doença e a agenda esvazia, mas as contas continuam chegando.</p>
-      <p>O <span class="hl">Seguro Renda Protegida BeautySeg</span> existe exatamente para esse momento: você recebe a sua diária e mantém o seu padrão de vida enquanto se recupera, sem depender de ninguém.</p>
+      <p>O <span class="hl">Seguro Renda Protegida</span> existe exatamente para esse momento: você recebe a sua diária e mantém o seu padrão de vida enquanto se recupera, sem depender de ninguém.</p>
     </div>
   </div>
 </section>
@@ -355,52 +375,13 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
   </div>
 </section>
 
-<!-- EXEMPLO / JULIANA -->
-<section class="sec" id="exemplo">
-  <div class="wrap">
-    <div class="story-card rv">
-      <div class="story-grid">
-        <div>
-          <span class="eyebrow" style="color:#fff;opacity:.85">Imagine-se no lugar da Juliana</span>
-          <h2>R$ 126,75 por mês que viram até R$ 73 mil quando a vida aperta</h2>
-          <p>Juliana tem 37 anos, é esteticista autônoma e comprova renda de R$ 6.000. Investindo apenas R$ 126,75 por mês, em caso de incapacidade por acidente ou doença ela pode receber até 365 diárias, totalizando R$ 73.000 — e mantém suas contas em dia enquanto se recupera.</p>
-        </div>
-        <div class="story-nums">
-          <div class="story-num"><div class="n" data-count="126" data-pre="R$ " data-suf=",75">R$ 0</div><div class="l">de investimento por mês</div></div>
-          <div class="story-num"><div class="n" data-count="365" data-suf="">0</div><div class="l">diárias de cobertura</div></div>
-          <div class="story-num"><div class="n" data-count="73" data-pre="R$ " data-suf=" mil">R$ 0</div><div class="l">recebidos em caso de afastamento</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONSULTORA -->
-<section class="sec problem">
-  <div class="wrap consult-grid">
-    <div class="consult-media rv"><img src="assets/depoimento-maria.jpg" alt="Consultora BeautySeg"></div>
-    <div class="rv" data-d="1">
-      <span class="eyebrow">Atendimento humano</span>
-      <h2>Fale com uma <span class="grad-text">Consultora BeautySeg</span></h2>
-      <p>Você vai se surpreender com o quanto é simples, acessível e fundamental proteger a sua renda. A gente entende a sua profissão, suas preocupações e a sua realidade.</p>
-      <ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Simulação gratuita e sem compromisso</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Plano que cabe no seu bolso</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Especialistas no seu segmento</li>
-      </ul>
-      <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20falar%20com%20uma%20Consultora%20BeautySeg%20sobre%20o%20Seguro%20Renda%20Protegida." class="btn btn-grad">Falar com uma consultora
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section class="sec final">
   <div class="wrap rv">
     <span class="eyebrow pink">A decisão é sua</span>
     <h2>O que você faz com <span class="grad-text">R$ 100 no seu mês?</span></h2>
     <p>Que tal investir na sua proteção e na da sua família? A escolha é entre o pesadelo da preocupação e o sonho da tranquilidade.</p>
-    <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20a%20minha%20proposta%20do%20Seguro%20Renda%20Protegida%20BeautySeg." class="btn btn-grad">Quero a minha proposta
+    <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20a%20minha%20proposta%20do%20Seguro%20Renda%20Protegida." class="btn btn-grad">Quero a minha proposta
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </section>
@@ -419,7 +400,7 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
           <li><a href="#protecao">A proteção</a></li>
           <li><a href="#coberturas">Coberturas</a></li>
           <li><a href="#quem">Pra quem é</a></li>
-          <li><a href="#exemplo">Exemplo real</a></li>
+          <li><a href="#simulacao">Simular</a></li>
         </ul>
       </div>
       <div>
@@ -439,7 +420,7 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
   </div>
 </footer>
 
-<a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida%20BeautySeg." class="wfloat" aria-label="WhatsApp" target="_blank" rel="noopener">
+<a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida." class="wfloat" aria-label="WhatsApp" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5L8.8 7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2 0 1.3.9 2.5 1.1 2.7.2.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2"/></svg>
 </a>
 
@@ -457,89 +438,142 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cio=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.count,pre=el.dataset.pre||'',suf=el.dataset.suf||'';if(reduce){el.textContent=pre+t+suf;}else{const o={v:0};const start=performance.now();const dur=1600;(function tick(now){const p=Math.min(1,(now-start)/dur);const e2=1-Math.pow(1-p,3);el.textContent=pre+Math.floor(t*e2)+suf;if(p<1)requestAnimationFrame(tick);})(start);}cio.unobserve(el);}}),{threshold:.5});
 document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
 
-/* ---------- QUIZ / SIMULAÇÃO ---------- */
+/* ---------- QUIZ: CALCULADORA + FORMULÁRIO ---------- */
 (function(){
   const WA='5511917295981';
-  const UFS=[['AC','Acre'],['AL','Alagoas'],['AP','Amapá'],['AM','Amazonas'],['BA','Bahia'],['CE','Ceará'],['DF','Distrito Federal'],['ES','Espírito Santo'],['GO','Goiás'],['MA','Maranhão'],['MT','Mato Grosso'],['MS','Mato Grosso do Sul'],['MG','Minas Gerais'],['PA','Pará'],['PB','Paraíba'],['PR','Paraná'],['PE','Pernambuco'],['PI','Piauí'],['RJ','Rio de Janeiro'],['RN','Rio Grande do Norte'],['RS','Rio Grande do Sul'],['RO','Rondônia'],['RR','Roraima'],['SC','Santa Catarina'],['SP','São Paulo'],['SE','Sergipe'],['TO','Tocantins']];
-  const data={nome:'',nasc:'',whats:'',uf:'',ufNome:'',cidade:''};
-  const steps=[
-    {key:'nome',field:'Nome',q:()=>'Qual é o seu nome completo?',hint:()=>'Vamos começar pelo básico.',type:'text',ph:'Seu nome completo'},
-    {key:'nasc',field:'Nascimento',q:()=>'Qual é a sua data de nascimento?',hint:()=>'Usamos para personalizar a sua proteção.',type:'date',ph:'DD/MM/AAAA'},
-    {key:'whats',field:'WhatsApp',q:()=>`Prazer, ${first()}! Qual é o seu WhatsApp?`,hint:()=>'Com DDD. É por onde a consultora fala com você.',type:'phone',ph:'(XX) XXXXX-XXXX'},
-    {key:'uf',field:'Estado',q:()=>'Em qual estado você mora?',hint:()=>'Selecione o seu estado.',type:'uf'},
-    {key:'cidade',field:'Cidade',q:()=>'Qual é a sua cidade?',hint:()=>`Selecione a sua cidade em ${data.ufNome||'seu estado'}.`,type:'city'}
-  ];
-  let step=0; const cityCache={};
+  const ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  const calc={renda:0,rendaFmt:'',meses:0,dependentes:''};
+  const lead={nome:'',nasc:'',whats:''};
   const body=document.getElementById('quizBody'),bar=document.getElementById('qBar'),sEl=document.getElementById('qStep'),fEl=document.getElementById('qField');
   if(!body) return;
-  const first=()=>{const n=(data.nome||'').trim().split(' ')[0];return n?n.charAt(0).toUpperCase()+n.slice(1).toLowerCase():'tudo bem';};
-  const valid=()=>{const v=data[steps[step].key]; const t=steps[step].type;
-    if(t==='date')return /^\d{2}\/\d{2}\/\d{4}$/.test(v);
-    if(t==='phone')return v.replace(/\D/g,'').length>=10;
-    return (v||'').trim().length>1;};
+  let phase='calc',leadStep=0;
+  const brl=n=>n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  const mesLbl=m=>m+(m===1?' mês':' meses');
+  const first=()=>{const n=(lead.nome||'').trim().split(' ')[0];return n?n.charAt(0).toUpperCase()+n.slice(1).toLowerCase():'tudo bem';};
+  const enc=s=>encodeURIComponent(s||'—');
+  const meta=(stp,top,pct)=>{sEl.textContent=stp;fEl.textContent=top;bar.style.width=pct+'%';};
   function maskDate(s){s=s.replace(/\D/g,'').slice(0,8);if(s.length>4)return s.replace(/(\d{2})(\d{2})(\d+)/,'$1/$2/$3');if(s.length>2)return s.replace(/(\d{2})(\d+)/,'$1/$2');return s;}
   function maskPhone(s){s=s.replace(/\D/g,'').slice(0,11);if(s.length>7)return s.replace(/(\d{2})(\d{5})(\d+)/,'($1) $2-$3');if(s.length>2)return s.replace(/(\d{2})(\d+)/,'($1) $2');if(s.length>0)return s.replace(/(\d+)/,'($1');return s;}
-  function render(){
-    const s=steps[step]; const last=step===steps.length-1;
-    sEl.textContent=(step+1)+' de 5'; fEl.textContent=s.field; bar.style.width=((step+1)/5*100)+'%';
-    let inputHTML='';
-    if(s.type==='uf'){
-      inputHTML='<select class="quiz-input" id="qInput"><option value="">Selecione o estado…</option>'+UFS.map(u=>`<option value="${u[0]}" ${data.uf===u[0]?'selected':''}>${u[1]}</option>`).join('')+'</select>';
-    }else if(s.type==='city'){
-      inputHTML='<input class="quiz-input" id="qInput" list="qCities" placeholder="Digite o nome da cidade" value="'+(data.cidade||'')+'"><datalist id="qCities"></datalist>';
-    }else{
-      const it=s.type==='date'?'tel':(s.type==='phone'?'tel':'text');
-      inputHTML=`<input class="quiz-input" id="qInput" type="${it}" inputmode="${s.type==='text'?'text':'numeric'}" placeholder="${s.ph}" value="${data[s.key]||''}">`;
-    }
+
+  /* ===== FASE 1: CALCULADORA ===== */
+  function renderRenda(){
+    phase='calc'; meta('1 de 3','Renda mensal',33);
     body.innerHTML=`<div class="quiz-step">
-      <h3>${s.q()}</h3><p class="hint">${s.hint()}</p>
-      ${inputHTML}
-      ${last?summaryHTML():''}
+      <h3>Qual é a sua renda mensal?</h3>
+      <p class="hint">Quanto você ganha por mês com o seu trabalho.</p>
+      <div class="quiz-prefix"><span class="pfx">R$</span>
+        <input class="quiz-input" id="qInput" type="tel" inputmode="numeric" placeholder="0,00" value="${calc.rendaFmt}"></div>
       <div class="quiz-actions">
-        ${step>0?'<button type="button" class="quiz-back" id="qBack" aria-label="Voltar">←</button>':''}
-        <button type="submit" class="btn btn-grad quiz-next" id="qNext">${last?'Enviar para a consultora':'Continuar'} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button type="submit" class="btn btn-grad quiz-next" id="qNext">Continuar ${ARROW}</button>
       </div></div>`;
     const inp=document.getElementById('qInput'),next=document.getElementById('qNext');
-    const sync=()=>{next.disabled=!valid();};
+    const sync=()=>next.disabled=!(calc.renda>0);
     inp.addEventListener('input',e=>{
-      let v=e.target.value;
-      if(s.type==='date')v=maskDate(v);
-      if(s.type==='phone')v=maskPhone(v);
-      e.target.value=v; data[s.key]=v;
-      if(s.type==='uf'){const f=UFS.find(u=>u[0]===v);data.ufNome=f?f[1]:'';}
-      sync();
+      const d=e.target.value.replace(/\D/g,'').slice(0,9);
+      calc.renda=d?parseInt(d,10)/100:0;
+      calc.rendaFmt=d?brl(calc.renda):'';
+      e.target.value=calc.rendaFmt; sync();
     });
-    if(s.type==='uf')inp.addEventListener('change',e=>{data.uf=e.target.value;const f=UFS.find(u=>u[0]===e.target.value);data.ufNome=f?f[1]:'';sync();});
+    sync(); setTimeout(()=>inp.focus(),60);
+  }
+  function renderMeses(){
+    phase='calc'; meta('2 de 3','Tempo afastado',66);
+    const opts=[1,2,3,4,6];
+    body.innerHTML=`<div class="quiz-step">
+      <h3>Se você ficasse afastado, por quanto tempo?</h3>
+      <p class="hint">Escolha um cenário realista.</p>
+      <div class="quiz-opts">${opts.map(m=>`<button type="button" class="quiz-opt${calc.meses===m?' sel':''}" data-m="${m}">${mesLbl(m)}</button>`).join('')}</div>
+      <div class="quiz-actions">
+        <button type="button" class="quiz-back" id="qBack" aria-label="Voltar">←</button>
+      </div></div>`;
+    body.querySelectorAll('.quiz-opt').forEach(b=>b.addEventListener('click',()=>{calc.meses=+b.dataset.m;renderResult();}));
+    document.getElementById('qBack').addEventListener('click',renderRenda);
+  }
+  function renderResult(){
+    phase='calc'; meta('3 de 3','Dependentes',100);
+    body.innerHTML=`<div class="quiz-step">
+      <h3>Você tem dependentes?</h3>
+      <p class="hint">Pessoas que dependem financeiramente de você.</p>
+      <div class="quiz-opts">
+        <button type="button" class="quiz-opt${calc.dependentes==='Sim'?' sel':''}" data-v="Sim">👨‍👩‍👧 Sim, tenho dependentes</button>
+        <button type="button" class="quiz-opt${calc.dependentes==='Não'?' sel':''}" data-v="Não">🙋 Não tenho dependentes</button>
+      </div>
+      <div class="quiz-actions">
+        <button type="button" class="quiz-back" id="qBack" aria-label="Voltar">←</button>
+      </div></div>`;
+    body.querySelectorAll('.quiz-opt').forEach(b=>b.addEventListener('click',()=>{calc.dependentes=b.dataset.v;renderRisco();}));
+    document.getElementById('qBack').addEventListener('click',renderMeses);
+  }
+  function renderRisco(){
+    phase='calc'; meta('Resultado','Risco',100);
+    const total=calc.renda*calc.meses;
+    body.innerHTML=`<div class="quiz-result">
+      <h3>Se você ficasse afastado por ${mesLbl(calc.meses)}…</h3>
+      <p class="lead-lbl">Você deixaria de receber aproximadamente</p>
+      <div class="quiz-big"><div class="v">R$ ${brl(total)}</div><div class="l">em renda</div></div>
+      <div class="quiz-cards">
+        <div class="quiz-rc"><div class="l">Renda mensal</div><div class="v">R$ ${brl(calc.renda)}</div></div>
+        <div class="quiz-rc"><div class="l">Tempo afastado</div><div class="v">${mesLbl(calc.meses)}</div></div>
+        <div class="quiz-rc"><div class="l">Dependentes</div><div class="v">${calc.dependentes}</div></div>
+      </div>
+      <div class="quiz-note">Sem proteção, um imprevisto pode virar uma crise financeira. O Seguro Renda Protegida garante a sua diária enquanto você se recupera.</div>
+      <div class="quiz-actions">
+        <button type="button" class="quiz-back" id="qBack" aria-label="Refazer">←</button>
+        <button type="button" class="btn btn-grad quiz-next" id="qGo" style="flex:1;justify-content:center">Quero proteger minha renda ${ARROW}</button>
+      </div></div>`;
+    document.getElementById('qBack').addEventListener('click',renderResult);
+    document.getElementById('qGo').addEventListener('click',()=>{leadStep=0;renderLead();});
+  }
+
+  /* ===== FASE 2: FORMULÁRIO ===== */
+  const lsteps=[
+    {key:'nome',field:'Nome',q:()=>'Qual é o seu nome completo?',hint:()=>'Pra personalizar a sua proposta.',type:'text',ph:'Seu nome completo'},
+    {key:'nasc',field:'Nascimento',q:()=>'Qual é a sua data de nascimento?',hint:()=>'Usamos para calcular a sua proteção.',type:'date',ph:'DD/MM/AAAA'},
+    {key:'whats',field:'WhatsApp',q:()=>`Prazer, ${first()}! Qual é o seu WhatsApp?`,hint:()=>'Com DDD. É por onde a consultora fala com você.',type:'phone',ph:'(XX) XXXXX-XXXX'}
+  ];
+  const lvalid=()=>{const st=lsteps[leadStep],v=lead[st.key];
+    if(st.type==='date')return /^\d{2}\/\d{2}\/\d{4}$/.test(v);
+    if(st.type==='phone')return v.replace(/\D/g,'').length>=10;
+    return (v||'').trim().length>1;};
+  function renderLead(){
+    phase='lead'; const st=lsteps[leadStep],last=leadStep===lsteps.length-1;
+    meta((leadStep+1)+' de 3',st.field,((leadStep+1)/3*100));
+    const it=st.type==='text'?'text':'tel';
+    body.innerHTML=`<div class="quiz-step">
+      <h3>${st.q()}</h3><p class="hint">${st.hint()}</p>
+      <input class="quiz-input" id="qInput" type="${it}" inputmode="${st.type==='text'?'text':'numeric'}" placeholder="${st.ph}" value="${lead[st.key]||''}">
+      ${last?summaryHTML():''}
+      <div class="quiz-actions">
+        <button type="button" class="quiz-back" id="qBack" aria-label="Voltar">←</button>
+        <button type="submit" class="btn btn-grad quiz-next" id="qNext">${last?'Falar com a consultora':'Continuar'} ${ARROW}</button>
+      </div></div>`;
+    const inp=document.getElementById('qInput'),next=document.getElementById('qNext');
+    const sync=()=>next.disabled=!lvalid();
+    inp.addEventListener('input',e=>{let v=e.target.value;if(st.type==='date')v=maskDate(v);if(st.type==='phone')v=maskPhone(v);e.target.value=v;lead[st.key]=v;sync();});
     sync();
-    const back=document.getElementById('qBack'); if(back)back.addEventListener('click',()=>{step--;render();});
-    if(s.type==='city')loadCities();
-    if(s.type!=='uf')setTimeout(()=>inp.focus(),60);
+    document.getElementById('qBack').addEventListener('click',()=>{if(leadStep>0){leadStep--;renderLead();}else{renderRisco();}});
+    setTimeout(()=>inp.focus(),60);
   }
   function summaryHTML(){return `<div class="quiz-summary">
-    <div>👤 <b>${data.nome||'—'}</b></div>
-    <div>📱 <b>${data.whats||'—'}</b></div>
-    <div>📍 <b>${data.cidade||'—'}${data.ufNome?' · '+data.ufNome:''}</b></div>
+    <div>👤 <b>${lead.nome||'—'}</b></div>
+    <div>📉 <b>Risco estimado: R$ ${brl(calc.renda*calc.meses)}</b> em ${mesLbl(calc.meses)} sem renda</div>
   </div>`;}
-  function loadCities(){
-    const dl=document.getElementById('qCities'); if(!dl||!data.uf)return;
-    const fill=(arr)=>{dl.innerHTML=arr.map(n=>`<option value="${n}">`).join('');};
-    if(cityCache[data.uf]){fill(cityCache[data.uf]);return;}
-    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${data.uf}/municipios?orderBy=nome`)
-      .then(r=>r.json()).then(j=>{const arr=j.map(m=>m.nome);cityCache[data.uf]=arr;fill(arr);}).catch(()=>{});
-  }
+
   document.getElementById('quiz').addEventListener('submit',e=>{
-    e.preventDefault(); if(!valid())return;
-    if(step<steps.length-1){step++;render();return;}
-    const msg=`Olá! Quero a minha simulação do Seguro Renda Protegida BeautySeg.%0A%0A👤 Nome: ${enc(data.nome)}%0A🎂 Nascimento: ${enc(data.nasc)}%0A📱 WhatsApp: ${enc(data.whats)}%0A📍 Cidade: ${enc(data.cidade)} - ${enc(data.ufNome)}`;
+    e.preventDefault();
+    if(phase==='calc'){ if(calc.renda>0)renderMeses(); return; }
+    if(!lvalid())return;
+    if(leadStep<lsteps.length-1){leadStep++;renderLead();return;}
+    const total=calc.renda*calc.meses;
+    const msg=`Olá! Quero a minha simulação do Seguro Renda Protegida.%0A%0A👤 Nome: ${enc(lead.nome)}%0A🎂 Nascimento: ${enc(lead.nasc)}%0A📱 WhatsApp: ${enc(lead.whats)}%0A%0A💰 Renda mensal: R$ ${enc(brl(calc.renda))}%0A⏳ Tempo afastado simulado: ${enc(mesLbl(calc.meses))}%0A📉 Risco estimado: R$ ${enc(brl(total))}%0A👨‍👩‍👧 Dependentes: ${enc(calc.dependentes)}`;
     const url=`https://wa.me/${WA}?text=${msg}`;
     body.innerHTML=`<div class="quiz-done"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h3>Tudo certo, ${first()}!</h3><p class="hint">Estamos te levando ao WhatsApp da consultora. Se não abrir, toque no botão abaixo.</p>
       <a href="${url}" class="btn btn-grad quiz-next" target="_blank" rel="noopener" style="display:inline-flex">Falar com a consultora</a></div>`;
-    sEl.textContent='Concluído'; fEl.textContent='✓'; bar.style.width='100%';
+    meta('Concluído','✓',100);
     window.open(url,'_blank');
   });
-  function enc(s){return encodeURIComponent(s||'—');}
-  render();
+  renderRenda();
 })();
 </script>
 </body>
