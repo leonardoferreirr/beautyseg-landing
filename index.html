@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BeautySeg — Seguro Renda Protegida para Profissionais da Beleza e Estética</title>
-<meta name="description" content="A primeira e única corretora do Brasil especializada em Seguro de Renda Protegida para esteticistas e profissionais da beleza. 20 anos de parceria com a Porto Seguro. Proteja sua renda mesmo sem poder trabalhar.">
+<meta name="description" content="Seguro de Renda Protegida para profissionais da beleza, estética e saúde. Proteja o crescimento do seu negócio quando um acidente ou doença afasta você do trabalho. Parceria Porto Seguro há 20 anos.">
 <meta name="theme-color" content="#1863dc">
 <meta property="og:title" content="BeautySeg — Seguro Renda Protegida para Profissionais da Beleza">
 <meta property="og:description" content="Sua renda depende das suas mãos. Proteja-a com a BeautySeg, parceira Porto Seguro há 20 anos.">
@@ -87,9 +87,11 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
 
 /* Logos / trust strip */
 .trust{padding:2rem 0;border-bottom:1px solid var(--line)}
-.trust-inner{display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;text-align:center}
+.trust-inner{display:flex;align-items:center;justify-content:center;gap:1.6rem;flex-wrap:wrap;text-align:center}
 .trust .t{font-weight:700;color:var(--slate);font-size:.95rem}
-.trust .porto{font-weight:800;color:var(--blue-deep);font-size:1.15rem}
+.trust .porto-logo{height:38px;width:auto;display:block}
+.trust .porto-tag{display:inline-flex;align-items:center;gap:.5rem}
+.trust .porto-tag::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--slate);opacity:.4}
 
 /* Section base */
 .sec{padding:6.5rem 0}
@@ -109,6 +111,17 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
 
 /* Coberturas cards */
 .cob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+/* Stack scroll: cada card vira sticky e se empilha conforme rola */
+@media(min-width:881px){
+  #coberturas .cob-grid{display:block;max-width:760px;margin:0 auto}
+  #coberturas .cob{position:sticky;display:block;margin:0 auto 1.4rem;border-radius:24px;will-change:transform}
+  #coberturas .cob:nth-child(1){top:96px;background:linear-gradient(180deg,#fff 0%,#f6f0ff 100%)}
+  #coberturas .cob:nth-child(2){top:116px;background:linear-gradient(180deg,#fff 0%,#fff0fa 100%)}
+  #coberturas .cob:nth-child(3){top:136px;background:linear-gradient(180deg,#fff 0%,#eaf2ff 100%)}
+  #coberturas .cob:nth-child(4){top:156px;background:linear-gradient(180deg,#fff 0%,#f6f0ff 100%)}
+  #coberturas .cob:nth-child(5){top:176px;background:linear-gradient(180deg,#fff 0%,#fff0fa 100%)}
+  #coberturas .cob:nth-child(6){top:196px;background:linear-gradient(180deg,#fff 0%,#eaf2ff 100%)}
+}
 .cob{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:2.1rem 1.9rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s;position:relative;overflow:hidden}
 .cob:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:transparent}
 .cob .ic{width:56px;height:56px;border-radius:16px;background:var(--grad-soft);display:grid;place-items:center;margin-bottom:1.3rem}
@@ -202,6 +215,7 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
 .quiz-step .hint{color:var(--slate);margin-bottom:1.4rem}
 .quiz-input{width:100%;padding:1.05rem 1.2rem;border:1.5px solid var(--line);border-radius:14px;font-family:var(--ff);font-size:1.05rem;color:var(--ink);transition:border-color .3s,box-shadow .3s;background:#fff;text-align:center}
 .quiz-input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(24,99,220,.12)}
+.quiz-select{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,var(--slate) 50%),linear-gradient(135deg,var(--slate) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 15px) 50%;background-size:7px 7px,7px 7px;background-repeat:no-repeat;padding-right:3rem}
 .quiz-actions{display:flex;gap:.8rem;margin-top:1.4rem}
 .quiz-back{flex:0 0 auto;width:56px;border:1.5px solid var(--line);background:#fff;border-radius:14px;cursor:pointer;font-size:1.3rem;color:var(--slate);transition:.3s}
 .quiz-back:hover{border-color:var(--blue);color:var(--blue)}
@@ -260,8 +274,8 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
   <div class="wrap hero-grid">
     <div class="hero-copy rv">
       <span class="badge"><span class="pt">20 anos</span>de parceria com a Porto Seguro</span>
-      <h1>Sua renda depende das suas mãos. <span class="grad-text">E se elas precisarem parar?</span></h1>
-      <p class="sub">O Seguro Renda Protegida garante a sua diária mesmo quando um acidente ou doença te afasta do trabalho. A primeira e única corretora do Brasil feita para profissionais da beleza e estética.</p>
+      <h1>Sua renda depende das suas mãos. <span class="grad-text">E se elas pararem?</span></h1>
+      <p class="sub">Proteja o resultado do seu trabalho. Enquanto você constrói o seu negócio, o Seguro Renda Protegida garante a sua diária se um acidente ou doença te afasta. Feito sob medida para quem vive de profissão própria.</p>
       <div class="hero-actions">
         <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20proteger%20minha%20renda%20com%20o%20Seguro%20Renda%20Protegida." class="btn btn-grad">Quero proteger minha renda
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -270,7 +284,7 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
       <div class="hero-mini">
         <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Renda garantida</div>
         <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Sem burocracia</div>
-        <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> A partir de ~R$100/mês</div>
+        <div class="m"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Proteção integral</div>
       </div>
     </div>
     <div class="hero-media rv" data-d="1">
@@ -288,8 +302,8 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
   <div class="wrap">
     <div class="sec-head center rv">
       <span class="quiz-badge">Descubra seu risco financeiro</span>
-      <h2>Se um acidente ou doença te <span class="grad-text">afastar do trabalho</span>, sua renda para junto.</h2>
-      <p>Responda 3 perguntas e veja, em segundos, quanto você deixaria de ganhar.</p>
+      <h2>Quanto o seu negócio <span class="grad-text">para de render</span> se você não consegue trabalhar?</h2>
+      <p>Responda 3 perguntas e descubra, em segundos, o tamanho do impacto financeiro.</p>
     </div>
     <div class="quiz-card rv" data-d="1">
       <div class="quiz-meta">
@@ -306,9 +320,8 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
 <div class="trust">
   <div class="wrap trust-inner">
     <span class="t">Garantia e solidez de quem você confia:</span>
-    <span class="porto">Porto Seguro</span>
-    <span class="t">·  20 anos de parceria</span>
-    <span class="t">·  SUSEP 202024508</span>
+    <img src="assets/porto-logo.png" alt="Porto Seguro" class="porto-logo">
+    <span class="t porto-tag">20 anos de parceria</span>
   </div>
 </div>
 
@@ -317,10 +330,9 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
   <div class="wrap problem-grid">
     <div class="problem-media rv"><img src="assets/mao-quebrada.jpg" alt="Profissional com o braço imobilizado"></div>
     <div class="rv" data-d="1">
-      <span class="eyebrow pink">A realidade que ninguém quer viver</span>
-      <h2>Quando a sua mão para, <span class="grad-text">a sua renda para junto.</span></h2>
-      <p>Você é autônoma. Não existe atestado que pague o boleto. Um tombo, uma cirurgia, uma tendinite, um afastamento por doença e a agenda esvazia, mas as contas continuam chegando.</p>
-      <p>O <span class="hl">Seguro Renda Protegida</span> existe exatamente para esse momento: você recebe a sua diária e mantém o seu padrão de vida enquanto se recupera, sem depender de ninguém.</p>
+      <h2>Quando a sua mão para, <span class="grad-text">o seu negócio para junto.</span></h2>
+      <p>Você constrói uma agenda cheia, fideliza cliente, cria reserva. Mas tudo isso depende do seu corpo trabalhar. Um tombo, uma cirurgia, uma tendinite e o que você levou meses pra construir começa a regredir, com as contas continuando do mesmo jeito.</p>
+      <p>O <span class="hl">Seguro Renda Protegida</span> mantém o seu fluxo de caixa enquanto você se recupera: você não consome reserva, não atrasa investimento, não perde o passo do crescimento que estava ganhando.</p>
     </div>
   </div>
 </section>
@@ -329,9 +341,8 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
 <section class="sec" id="coberturas">
   <div class="wrap">
     <div class="sec-head center rv">
-      <span class="eyebrow">As coberturas</span>
       <h2>Proteção completa, feita <span class="grad-text">sob medida pra você</span></h2>
-      <p>Uma solução personalizável que cuida da sua renda, da sua tranquilidade e da sua família.</p>
+      <p>Uma estrutura sólida pra você seguir construindo seu negócio sem o medo do imprevisto travar o avanço.</p>
     </div>
     <div class="cob-grid">
       <article class="cob rv" data-d="1">
@@ -356,31 +367,11 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
   </div>
 </section>
 
-<!-- PRA QUEM É -->
-<section class="sec">
-  <div class="wrap audience" style="padding:4.5rem 2rem">
-    <div class="sec-head center rv">
-      <span class="eyebrow" style="color:#ff8fcf">Pra quem é</span>
-      <h2>Feito para quem deixa o mundo <span class="grad-text">mais bonito</span></h2>
-      <p>Autônomos, MEIs ou com registro em carteira. Se a sua renda vem das suas mãos, é pra você.</p>
-    </div>
-    <div class="chips">
-      <span class="chip rv">Esteticista</span><span class="chip rv">Biomédico(a)</span><span class="chip rv">Maquiador(a)</span>
-      <span class="chip rv">Designer de Sobrancelhas</span><span class="chip rv">Micropigmentador(a)</span><span class="chip rv">Lash Designer</span>
-      <span class="chip rv">Manicure / Pedicure</span><span class="chip rv">Cabeleireiro(a)</span><span class="chip rv">Barbeiro</span>
-      <span class="chip rv">Podólogo(a)</span><span class="chip rv">Depilador(a)</span><span class="chip rv">Massoterapeuta</span>
-      <span class="chip rv">Fisioterapeuta</span><span class="chip rv">Odontólogo(a)</span><span class="chip rv">Tatuador(a)</span>
-      <span class="chip rv">Visagista</span><span class="chip rv">Técnico(a) em Estética</span><span class="chip rv">e muito +</span>
-    </div>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section class="sec final">
   <div class="wrap rv">
-    <span class="eyebrow pink">A decisão é sua</span>
-    <h2>O que você faz com <span class="grad-text">R$ 100 no seu mês?</span></h2>
-    <p>Que tal investir na sua proteção e na da sua família? A escolha é entre o pesadelo da preocupação e o sonho da tranquilidade.</p>
+    <h2>O próximo passo é <span class="grad-text">blindar o seu crescimento.</span></h2>
+    <p>Você está construindo. Cada cliente novo, cada mês fechado bem, cada investimento no negócio. Garantir o seu fluxo de caixa é o que separa o profissional que cresce do que recomeça toda vez que um imprevisto acontece.</p>
     <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20a%20minha%20proposta%20do%20Seguro%20Renda%20Protegida." class="btn btn-grad">Quero a minha proposta
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
@@ -399,7 +390,6 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
         <ul>
           <li><a href="#protecao">A proteção</a></li>
           <li><a href="#coberturas">Coberturas</a></li>
-          <li><a href="#quem">Pra quem é</a></li>
           <li><a href="#simulacao">Simular</a></li>
         </ul>
       </div>
@@ -414,7 +404,7 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
       </div>
     </div>
     <div class="foot-legal">
-      <span>© 2026 BeautySeg · CNPJ 05.571.219/0001-64 · SUSEP 202024508</span>
+      <span>© 2026 BeautySeg · CNPJ 05.571.219/0001-64</span>
       <span>*Valores ilustrativos, conforme coberturas contratadas.</span>
     </div>
   </div>
@@ -526,22 +516,36 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   }
 
   /* ===== FASE 2: FORMULÁRIO ===== */
+  const PROFISSOES=['Esteticista','Biomédico(a)','Maquiador(a)','Designer de Sobrancelhas','Micropigmentador(a)','Lash Designer','Manicure / Pedicure','Cabeleireiro(a)','Barbeiro','Podólogo(a)','Depilador(a)','Massoterapeuta','Fisioterapeuta','Odontólogo(a)','Tatuador(a)','Visagista','Técnico(a) em Estética','Outros'];
+  lead.prof=''; lead.profOutro='';
   const lsteps=[
     {key:'nome',field:'Nome',q:()=>'Qual é o seu nome completo?',hint:()=>'Pra personalizar a sua proposta.',type:'text',ph:'Seu nome completo'},
     {key:'nasc',field:'Nascimento',q:()=>'Qual é a sua data de nascimento?',hint:()=>'Usamos para calcular a sua proteção.',type:'date',ph:'DD/MM/AAAA'},
+    {key:'prof',field:'Profissão',q:()=>'Qual é a sua profissão?',hint:()=>'Escolha a sua área de atuação.',type:'select'},
     {key:'whats',field:'WhatsApp',q:()=>`Prazer, ${first()}! Qual é o seu WhatsApp?`,hint:()=>'Com DDD. É por onde a consultora fala com você.',type:'phone',ph:'(XX) XXXXX-XXXX'}
   ];
   const lvalid=()=>{const st=lsteps[leadStep],v=lead[st.key];
     if(st.type==='date')return /^\d{2}\/\d{2}\/\d{4}$/.test(v);
     if(st.type==='phone')return v.replace(/\D/g,'').length>=10;
+    if(st.type==='select'){if(!v)return false; if(v==='Outros')return (lead.profOutro||'').trim().length>1; return true;}
     return (v||'').trim().length>1;};
   function renderLead(){
-    phase='lead'; const st=lsteps[leadStep],last=leadStep===lsteps.length-1;
-    meta((leadStep+1)+' de 3',st.field,((leadStep+1)/3*100));
-    const it=st.type==='text'?'text':'tel';
+    phase='lead'; const st=lsteps[leadStep],last=leadStep===lsteps.length-1,total=lsteps.length;
+    meta((leadStep+1)+' de '+total,st.field,((leadStep+1)/total*100));
+    let inputHTML;
+    if(st.type==='select'){
+      inputHTML=`<select class="quiz-input quiz-select" id="qInput">
+        <option value="">Selecione a sua profissão…</option>
+        ${PROFISSOES.map(p=>`<option value="${p}"${lead.prof===p?' selected':''}>${p}</option>`).join('')}
+      </select>
+      <input class="quiz-input quiz-outro" id="qOutro" type="text" placeholder="Digite a sua profissão" value="${lead.profOutro||''}" style="margin-top:.8rem;display:${lead.prof==='Outros'?'block':'none'}">`;
+    } else {
+      const it=st.type==='text'?'text':'tel';
+      inputHTML=`<input class="quiz-input" id="qInput" type="${it}" inputmode="${st.type==='text'?'text':'numeric'}" placeholder="${st.ph}" value="${lead[st.key]||''}">`;
+    }
     body.innerHTML=`<div class="quiz-step">
       <h3>${st.q()}</h3><p class="hint">${st.hint()}</p>
-      <input class="quiz-input" id="qInput" type="${it}" inputmode="${st.type==='text'?'text':'numeric'}" placeholder="${st.ph}" value="${lead[st.key]||''}">
+      ${inputHTML}
       ${last?summaryHTML():''}
       <div class="quiz-actions">
         <button type="button" class="quiz-back" id="qBack" aria-label="Voltar">←</button>
@@ -549,13 +553,24 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
       </div></div>`;
     const inp=document.getElementById('qInput'),next=document.getElementById('qNext');
     const sync=()=>next.disabled=!lvalid();
-    inp.addEventListener('input',e=>{let v=e.target.value;if(st.type==='date')v=maskDate(v);if(st.type==='phone')v=maskPhone(v);e.target.value=v;lead[st.key]=v;sync();});
+    if(st.type==='select'){
+      inp.addEventListener('change',e=>{
+        lead.prof=e.target.value;
+        const outro=document.getElementById('qOutro');
+        outro.style.display=lead.prof==='Outros'?'block':'none';
+        if(lead.prof!=='Outros')lead.profOutro='';
+        sync();
+      });
+      document.getElementById('qOutro').addEventListener('input',e=>{lead.profOutro=e.target.value;sync();});
+    } else {
+      inp.addEventListener('input',e=>{let v=e.target.value;if(st.type==='date')v=maskDate(v);if(st.type==='phone')v=maskPhone(v);e.target.value=v;lead[st.key]=v;sync();});
+    }
     sync();
     document.getElementById('qBack').addEventListener('click',()=>{if(leadStep>0){leadStep--;renderLead();}else{renderRisco();}});
     setTimeout(()=>inp.focus(),60);
   }
-  function summaryHTML(){return `<div class="quiz-summary">
-    <div>👤 <b>${lead.nome||'—'}</b></div>
+  function summaryHTML(){const prof=lead.prof==='Outros'?lead.profOutro:lead.prof;return `<div class="quiz-summary">
+    <div>👤 <b>${lead.nome||'—'}</b>${prof?` · ${prof}`:''}</div>
     <div>📉 <b>Risco estimado: R$ ${brl(calc.renda*calc.meses)}</b> em ${mesLbl(calc.meses)} sem renda</div>
   </div>`;}
 
@@ -565,7 +580,8 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
     if(!lvalid())return;
     if(leadStep<lsteps.length-1){leadStep++;renderLead();return;}
     const total=calc.renda*calc.meses;
-    const msg=`Olá! Quero a minha simulação do Seguro Renda Protegida.%0A%0A👤 Nome: ${enc(lead.nome)}%0A🎂 Nascimento: ${enc(lead.nasc)}%0A📱 WhatsApp: ${enc(lead.whats)}%0A%0A💰 Renda mensal: R$ ${enc(brl(calc.renda))}%0A⏳ Tempo afastado simulado: ${enc(mesLbl(calc.meses))}%0A📉 Risco estimado: R$ ${enc(brl(total))}%0A👨‍👩‍👧 Dependentes: ${enc(calc.dependentes)}`;
+    const prof=lead.prof==='Outros'?lead.profOutro:lead.prof;
+    const msg=`Olá! Quero a minha simulação do Seguro Renda Protegida.%0A%0A👤 Nome: ${enc(lead.nome)}%0A🎂 Nascimento: ${enc(lead.nasc)}%0A💼 Profissão: ${enc(prof)}%0A📱 WhatsApp: ${enc(lead.whats)}%0A%0A💰 Renda mensal: R$ ${enc(brl(calc.renda))}%0A⏳ Tempo afastado simulado: ${enc(mesLbl(calc.meses))}%0A📉 Risco estimado: R$ ${enc(brl(total))}%0A👨‍👩‍👧 Dependentes: ${enc(calc.dependentes)}`;
     const url=`https://wa.me/${WA}?text=${msg}`;
     body.innerHTML=`<div class="quiz-done"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h3>Tudo certo, ${first()}!</h3><p class="hint">Estamos te levando ao WhatsApp da consultora. Se não abrir, toque no botão abaixo.</p>
