@@ -161,6 +161,8 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
 /* Final CTA */
 .final{text-align:center;background:var(--grad-soft)}
 .final h2{font-size:clamp(2rem,5vw,3.2rem);max-width:24rem;margin:1rem auto 1rem}
+.final h2.three-line{display:flex;flex-direction:column;gap:.05em;max-width:none}
+.final h2.three-line > span{display:block}
 .final p{color:var(--slate);font-size:1.15rem;max-width:34rem;margin:0 auto 2.2rem}
 
 /* Footer */
@@ -288,7 +290,7 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
       </div>
     </div>
     <div class="hero-media rv" data-d="1">
-      <div class="hero-photo"><img src="assets/hero-esteticista.jpg" alt="Profissional da estética em atendimento"></div>
+      <div class="hero-photo"><img src="assets/hero-dentista.jpg" alt="Dentista trabalhando com paciente — profissão que depende das mãos"></div>
       <div class="hero-card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <div><div class="n">até R$ 73 mil</div><div class="l">em diárias por afastamento*</div></div>
@@ -370,7 +372,7 @@ h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
 <!-- FINAL CTA -->
 <section class="sec final">
   <div class="wrap rv">
-    <h2>O próximo passo é <span class="grad-text">blindar o seu crescimento.</span></h2>
+    <h2 class="three-line"><span>O próximo</span><span>passo é <span class="grad-text">blindar</span></span><span class="grad-text">o seu crescimento.</span></h2>
     <p>Você está construindo. Cada cliente novo, cada mês fechado bem, cada investimento no negócio. Garantir o seu fluxo de caixa é o que separa o profissional que cresce do que recomeça toda vez que um imprevisto acontece.</p>
     <a href="https://wa.me/5511917295981?text=Ol%C3%A1!%20Quero%20a%20minha%20proposta%20do%20Seguro%20Renda%20Protegida." class="btn btn-grad">Quero a minha proposta
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -468,7 +470,7 @@ document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
   }
   function renderMeses(){
     phase='calc'; meta('2 de 3','Tempo afastado',66);
-    const opts=[1,2,3,4,6];
+    const opts=[3,6,9,12];
     body.innerHTML=`<div class="quiz-step">
       <h3>Se você ficasse afastado, por quanto tempo?</h3>
       <p class="hint">Escolha um cenário realista.</p>
