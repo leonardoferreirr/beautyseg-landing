@@ -77,16 +77,14 @@ h1 em,h2 em,h3 em{font-family:var(--ff-display);font-style:italic;font-weight:50
 .burger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
 
 /* Hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:9rem 0 5rem;overflow:hidden;isolation:isolate;background:var(--ink)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:6rem 0 5rem;overflow:hidden;isolation:isolate;background:var(--ink)}
 .hero-media{position:absolute;inset:0;z-index:0}
 .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-veil{position:absolute;inset:0;background:linear-gradient(125deg,rgba(14,17,23,.95) 0%,rgba(14,17,23,.86) 38%,rgba(20,33,61,.55) 70%,rgba(14,17,23,.3) 100%);z-index:1}
 .hero-blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;pointer-events:none;z-index:1}
 .hero-blob.a{width:520px;height:520px;background:rgba(233,30,99,.35);top:-160px;right:-120px}
 .hero-blob.b{width:480px;height:480px;background:rgba(20,33,61,.7);bottom:-180px;left:-140px}
-.hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:1.15fr .85fr;gap:5rem;align-items:center}
-.hero-meta{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);border:1px solid var(--line-2);border-radius:100px;padding:.5rem 1.1rem .5rem .55rem;font-size:.82rem;font-weight:500;color:var(--pearl);margin-bottom:2rem}
-.hero-meta .pt{background:var(--rose);color:#fff;font-size:.7rem;font-weight:700;padding:.3rem .7rem;border-radius:100px;letter-spacing:.06em;text-transform:uppercase}
+.hero-grid{position:relative;z-index:3;display:grid;grid-template-columns:1fr;gap:5rem;align-items:center;max-width:46rem}
 .hero h1{font-size:clamp(2.6rem,5.6vw,4.4rem);margin-bottom:1.5rem}
 .hero h1 .hi{color:var(--rose-soft);font-family:var(--ff-display);font-style:italic;font-weight:500}
 .hero .sub{font-size:1.18rem;color:var(--silver);max-width:36rem;margin-bottom:1.4rem;line-height:1.65}
@@ -96,9 +94,6 @@ h1 em,h2 em,h3 em{font-family:var(--ff-display);font-style:italic;font-weight:50
 .hero-trust{display:flex;align-items:center;gap:1.6rem;padding-top:2rem;border-top:1px solid var(--line)}
 .hero-trust img.porto{height:32px;width:auto;filter:brightness(0) invert(1);opacity:.75}
 .hero-trust .t{font-size:.82rem;color:var(--silver);letter-spacing:.04em;max-width:18rem;line-height:1.5}
-.hero-visual{position:relative;aspect-ratio:4/5;border-radius:var(--radius-l);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line-2)}
-.hero-visual img{width:100%;height:100%;object-fit:cover}
-.hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(14,17,23,.7) 100%)}
 
 /* Section base */
 section{position:relative}
@@ -308,7 +303,6 @@ footer{background:#070a10;border-top:1px solid var(--line);padding:4rem 0 2.5rem
 /* Responsivo */
 @media(max-width:1080px){
   .hero-grid,.patrimonio-grid,.parar-grid,.continuidade-grid,.sobre-grid{grid-template-columns:1fr;gap:3rem}
-  .hero-visual{max-width:480px;margin:0 auto}
   .exemplos-grid{grid-template-columns:1fr;max-width:500px;margin-left:auto;margin-right:auto}
   .riscos-grid{grid-template-columns:repeat(2,1fr)}
   .prime-card{grid-template-columns:1fr;padding:2.4rem;text-align:center}
@@ -324,12 +318,10 @@ footer{background:#070a10;border-top:1px solid var(--line);padding:4rem 0 2.5rem
   .nav.open .nav-links a{font-size:1rem}
   .section,.fechamento{padding:5rem 0}
   .section.tight{padding:4rem 0}
-  .hero{padding:8rem 0 4rem;min-height:auto}
+  .hero{padding:5rem 0 4rem;min-height:auto}
   .hero h1{font-size:clamp(2rem,8vw,2.8rem)}
   .hero .sub{font-size:1.05rem}
   .hero-actions .btn{flex:1}
-  .hero-meta{display:flex;flex-wrap:wrap;gap:.5rem;font-size:.74rem;padding:.5rem 1rem .5rem .5rem;line-height:1.35;align-items:center}
-  .hero-meta .pt{font-size:.62rem;padding:.25rem .55rem}
   .hero-trust{flex-wrap:wrap;gap:1rem}
   .agenda-card{padding:1.6rem}
   .agenda-card .agenda-day{font-size:.7rem;border-radius:6px}
@@ -372,7 +364,7 @@ footer{background:#070a10;border-top:1px solid var(--line);padding:4rem 0 2.5rem
 <!-- HERO -->
 <section class="hero" id="topo">
   <div class="hero-media">
-    <img src="assets/hero-doutora.jpg" alt="">
+    <img src="assets/hero-dentista.jpg" alt="">
   </div>
   <div class="hero-veil"></div>
   <div class="hero-blob a"></div>
@@ -380,10 +372,6 @@ footer{background:#070a10;border-top:1px solid var(--line);padding:4rem 0 2.5rem
 
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <div class="hero-meta rv">
-        <span class="pt">Lançamento</span>
-        <span>Programa BeautySeguros Prime · Renda Protegida + Telemedicina</span>
-      </div>
       <h1 class="rv" data-d="1">
         E se <span class="hi">suas mãos</span><br>precisassem parar amanhã?
       </h1>
@@ -406,10 +394,6 @@ footer{background:#070a10;border-top:1px solid var(--line);padding:4rem 0 2.5rem
         <img src="assets/porto-logo.png" alt="Porto" class="porto">
         <span class="t">Parceria estratégica com a Porto.<br>Mais de 20 anos cuidando de quem cuida.</span>
       </div>
-    </div>
-
-    <div class="hero-visual rv" data-d="3">
-      <img src="assets/hero-dentista.jpg" alt="Profissional da Saúde Estética em atendimento">
     </div>
   </div>
 </section>
